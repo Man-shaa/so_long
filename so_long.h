@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/06 17:45:58 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/06 21:10:52 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
+# include "GNL/get_next_line.h"
 
 # define WINDOW_WIDTH 600
 # define WINDOW_HEIGHT 300
@@ -80,13 +81,31 @@ typedef struct s_data
 }	t_data;
 
 // keypress.c
-int	handle_keypress(int keysym, t_data *data);
+int		handle_keypress(int keysym, t_data *data);
+
+// map.c
+void	free_map(char **map);
+int		line_count(char *access_path);
+void	fill_map(t_data *data);
+void	initialise_map(char *path, t_data *data);
+void	create_map(char *path, t_data *data);
+
+// parsing_map.c
+int		is_rect(t_data *data);
+int		is_btw_walls(t_data *data);
+void 	select_incrementation(char c, t_data *data);
+int		is_valid(int row, int column, t_data *data);
+int		parsing(t_data *data);
 
 // render.c
 void	img_pix_put(t_image *img, int x, int y, int color);
-int render_rect(t_image *img, t_rect rect);
+int 	render_rect(t_image *img, t_rect rect);
 void	render_background(t_image *img, int color);
-int	render(t_data *data);
+int		render(t_data *data);
 
+// utils.c
+void	free_map(char **map);
+void	ft_bzero(void *tab, size_t n);
+void	*ft_calloc(size_t nelem, size_t size);
 
 #endif

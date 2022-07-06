@@ -4,9 +4,12 @@ SRCS_DIR = srcs/
 
 GNL_DIR = GNL/
 
-SRCS =		${SRCS_DIR}main.c \
+SRCS =		${SRCS_DIR}keypress.c \
+			${SRCS_DIR}main.c \
+			${SRCS_DIR}map.c \
+			${SRCS_DIR}parsing_map.c \
 			${SRCS_DIR}render.c \
-			${SRCS_DIR}keypress.c \
+			${SRCS_DIR}utils.c \
 			${GNL_DIR}get_next_line_utils.c \
 			${GNL_DIR}get_next_line.c 
 
