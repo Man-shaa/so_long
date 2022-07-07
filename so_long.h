@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/06 21:10:52 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/07 18:00:26 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,48 @@
 # include "mlx/mlx_int.h"
 # include "GNL/get_next_line.h"
 
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGHT 300
+# define WINDOW_WIDTH	700
+# define WINDOW_HEIGHT	300
+# define IMG_SIZE		48
+# define MLX_ERROR		1
 
-# define MLX_ERROR 1
+# define GROUND			"Image/ground.xpm"
 
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0xFF00
-# define WHITE_PIXEL 0xFFFFFF
+# define RED_PIXEL		0xFF0000
+# define GREEN_PIXEL	0xFF00
+# define WHITE_PIXEL	0xFFFFFF
 
-#  define LEFT_KEY				65361
-#  define RIGHT_KEY				65363
-#  define UP_KEY				65362
-#  define DOWN_KEY				65364
-#  define A_KEY					97
-#  define W_KEY					119
-#  define S_KEY					115
-#  define D_KEY					100
-#  define ESC					65307
+# define LEFT_KEY		65361
+# define UP_KEY			65362
+# define RIGHT_KEY		65363
+# define DOWN_KEY		65364
+# define A_KEY			97
+# define W_KEY			119
+# define S_KEY			115
+# define D_KEY			100
+# define ESC			65307
 
 typedef struct s_image
 {
 	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	int		width;
+	int		height;
+	void	*wall;
+	void	*exit;
+	void	*ground;
+	void	*player;
+	void	*item;
+	int		line_length;
+
 }	t_image;
 
 typedef struct s_rect
 {
 	int	x;
 	int	y;
-	int width;
-	int height;
-	int color;
+	int	width;
+	int	height;
+	int	color;
 }	t_rect;
 
 typedef struct s_map
@@ -82,6 +89,7 @@ typedef struct s_data
 
 // keypress.c
 int		handle_keypress(int keysym, t_data *data);
+int		handle_btnrealease(t_data *data);
 
 // map.c
 void	free_map(char **map);
@@ -90,17 +98,22 @@ void	fill_map(t_data *data);
 void	initialise_map(char *path, t_data *data);
 void	create_map(char *path, t_data *data);
 
+// mlx_utils.c
+int		init_window(t_data *data);
+void	init_images(t_data *data);
+void	loop_hook(t_data data);
+void	destroy_images(t_data data);
+
 // parsing_map.c
 int		is_rect(t_data *data);
 int		is_btw_walls(t_data *data);
-void 	select_incrementation(char c, t_data *data);
+void	select_incrementation(char c, t_data *data);
 int		is_valid(int row, int column, t_data *data);
 int		parsing(t_data *data);
 
 // render.c
-void	img_pix_put(t_image *img, int x, int y, int color);
-int 	render_rect(t_image *img, t_rect rect);
-void	render_background(t_image *img, int color);
+void	init_images(t_data *data);
+void	parse_chars(t_data *data, int width, int i, int j);
 int		render(t_data *data);
 
 // utils.c

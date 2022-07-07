@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:21:49 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/06 21:28:03 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:53:02 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	is_btw_walls(t_data *data)
 	last_column = data->map.line_len - 1;
 	last_row = data->map.line_count - 1;
 	while (data->map.map[0][i] != '\0' && data->map.map[0][i] != '\n'
-		&& data->map.map[last_row][i] != '\0' && data->map.map[last_row][i] != '\n')
+		&& data->map.map[last_row][i] != '\0'
+		&& data->map.map[last_row][i] != '\n')
 	{
 		if (data->map.map[0][i] != '1' || data->map.map[last_row][i] != '1')
 			return (0);
@@ -57,7 +58,7 @@ int	is_btw_walls(t_data *data)
 	return (1);
 }
 
-void select_incrementation(char c, t_data *data)
+void	select_incrementation(char c, t_data *data)
 {
 	if (c == '0' || c == '1')
 		return ;

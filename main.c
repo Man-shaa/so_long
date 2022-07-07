@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keypress.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 15:36:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/07 15:42:19 by msharifi         ###   ########.fr       */
+/*   Created: 2022/06/14 14:31:35 by msharifi          #+#    #+#             */
+/*   Updated: 2022/07/07 18:02:04 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
-int	handle_keypress(int keysym, t_data *data)
+int	main(void)
 {
-	if (keysym == XK_Escape)
+	t_data	data;
+	create_map("maps/test_map.ber", &data);
+	if (!(parsing(&data)))
 	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
+		write(2, "Map non conforme !\n", 19);
+		return(free_map(data.map.map), 0);
 	}
-	return (0);
-}
-
-int	handle_btnrealease(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
+	init_window(&data);
+	init_images(&data);
+	render(&data);
+	loop_hook(data);
+	destroy_images(data);
+	free(data.mlx_ptr);
+	if (data.map.map)
+		free_map(data.map.map);
 	return (0);
 }

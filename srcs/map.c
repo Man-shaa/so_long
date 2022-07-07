@@ -6,12 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:25:42 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/06 21:28:52 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:17:39 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
 
 void	free_map(char **map)
 {
@@ -86,6 +85,7 @@ void	initialise_map(char *path, t_data *data)
 	data->map.collected = 0;
 	data->map.path = path;
 	data->map.line_count = line_count(path);
+	data->map.can_exit = 0;
 }
 
 void	create_map(char *path, t_data *data)

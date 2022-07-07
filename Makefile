@@ -5,13 +5,14 @@ SRCS_DIR = srcs/
 GNL_DIR = GNL/
 
 SRCS =		${SRCS_DIR}keypress.c \
-			${SRCS_DIR}main.c \
 			${SRCS_DIR}map.c \
+			${SRCS_DIR}mlx_utils.c \
 			${SRCS_DIR}parsing_map.c \
 			${SRCS_DIR}render.c \
 			${SRCS_DIR}utils.c \
 			${GNL_DIR}get_next_line_utils.c \
-			${GNL_DIR}get_next_line.c 
+			${GNL_DIR}get_next_line.c \
+			main.c
 
 _DEPS =		so_long.h
 
