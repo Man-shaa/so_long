@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keypress.c                                         :+:      :+:    :+:   */
+/*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 15:36:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 18:50:36 by msharifi         ###   ########.fr       */
+/*   Created: 2022/07/08 16:42:39 by msharifi          #+#    #+#             */
+/*   Updated: 2022/07/08 19:01:30 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	handle_keypress(int keysym, t_data *data)
+void	init_player_pos(t_data *data)
 {
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
-	else if (ft_strchr2("wasd", keysym))
-		move_player(data, keysym);
-	return (0);
-}
+	int	x;
+	int	y;
 
-int	handle_btnrealease(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
-	return (0);
+	x = 0;
+	data->player.move_count = 0;
+	while (data->map.map[x])
+	{
+		y = 0;
+		while (data->map.map[x][y])
+		{
+			if (data->map.map[x][y] == 'P')
+			{
+				data->player.p_x = x;
+				data->player.p_y = y;
+			}
+			y++;
+		}
+		x++;
+	}
 }

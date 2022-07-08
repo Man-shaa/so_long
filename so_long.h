@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 13:36:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:26:29 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "mlx/mlx_int.h"
 # include "GNL/get_next_line.h"
 
-# define WINDOW_WIDTH	1300
-# define WINDOW_HEIGHT	800
+# define WINDOW_WIDTH	1600
+# define WINDOW_HEIGHT	1000
 # define IMG_SIZE		100
 # define MLX_ERROR		1
 
@@ -29,7 +29,7 @@
 # define PLAYER			"Image/player.xpm"
 # define ITEM			"Image/item.xpm"
 # define EXIT			"Image/exit.xpm"
-# define WALL			"Image/wall.xpm"
+# define WALL			"Image/wall2.xpm"
 
 # define RED_PIXEL		0xFF0000
 # define GREEN_PIXEL	0xFF00
@@ -74,13 +74,24 @@ typedef struct s_map
 
 }				t_map;
 
+typedef struct s_player
+{
+	int		p_x;
+	int		p_y;
+	int		move_count;
+}				t_player;
+
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_image	img;
-	t_map	map;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_image		img;
+	t_map		map;
+	t_player	player;
 }	t_data;
+
+// init_player.c
+void	init_player_pos(t_data *data);
 
 // keypress.c
 int		handle_keypress(int keysym, t_data *data);
@@ -90,8 +101,8 @@ int		handle_btnrealease(t_data *data);
 void	free_map(char **map);
 int		line_count(char *access_path);
 void	fill_map(t_data *data);
-void	initialise_map(char *path, t_data *data);
-void	create_map(char *path, t_data *data);
+int		initialise_map(char *path, t_data *data);
+int		create_map(char *path, t_data *data);
 
 // mlx_utils.c
 int		init_window(t_data *data);
@@ -99,9 +110,15 @@ void	init_images(t_data *data);
 void	loop_hook(t_data data);
 void	destroy_images(t_data data);
 
+// moves.c
+int		check_next_tile(t_data *data, char direction, char tile);
+void	check_item_next_tile(t_data *data, char direction);
+int		end_game(t_data *data);
+void	move_player(t_data *data, char direction);
+
 // parsing_map.c
 int		is_rect(t_data *data);
-int		is_btw_walls(t_data *data);
+int		is_btw_walls(t_data *data, int i);
 void	select_incrementation(char c, t_data *data);
 int		is_valid(int row, int column, t_data *data);
 int		parsing(t_data *data);
@@ -112,8 +129,8 @@ void	parse_chars(t_data *data, int width, int i, int j);
 int		render(t_data *data);
 
 // utils.c
-void	free_map(char **map);
 void	ft_bzero(void *tab, size_t n);
 void	*ft_calloc(size_t nelem, size_t size);
+int		ft_strchr2(char *str, int c);
 
 #endif

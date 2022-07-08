@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:59:53 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/06 18:25:56 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:32:19 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,18 @@ void	*ft_calloc(size_t nelem, size_t size)
 		return (NULL);
 	ft_bzero(tab, (nelem * size));
 	return (tab);
+}
+
+int	ft_strchr2(char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (c);
+		i++;
+	}
+	return (0);
 }

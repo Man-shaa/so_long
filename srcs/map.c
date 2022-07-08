@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:25:42 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 12:15:04 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:50:43 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_map(char **map)
 	size_t	i;
 
 	i = 0;
+	if (!map)
+		return ;
 	while (map[i])
 	{
 		free(map[i]);
@@ -36,7 +38,7 @@ int	line_count(char *access_path)
 	fd = open(access_path, O_RDONLY);
 	if (fd < 0)
 	{
-		write(2, "Open failed !\n", 15);
+		write(2, "Open failed !\n", 14);
 		return (0);
 	}
 	line = get_next_line(fd);
@@ -77,7 +79,7 @@ void	fill_map(t_data *data)
 	data->map.map[row] = NULL;
 }
 
-void	initialise_map(char *path, t_data *data)
+int	initialise_map(char *path, t_data *data)
 {
 	data->map.count_c = 0;
 	data->map.count_p = 0;
@@ -85,24 +87,29 @@ void	initialise_map(char *path, t_data *data)
 	data->map.collected = 0;
 	data->map.path = path;
 	data->map.line_count = line_count(path);
+	if (!data->map.line_count)
+		return (0);
 	data->map.can_exit = 0;
 	data->img.height = IMG_SIZE;
 	data->img.width = IMG_SIZE;
+	return (1);
 }
 
-void	create_map(char *path, t_data *data)
+int	create_map(char *path, t_data *data)
 {
-	initialise_map(path, data);
-	data->map.map = malloc(sizeof(char *) * (data->map.line_count + 1));
+	if (!(initialise_map(path, data)))
+		return (0);
+	data->map.map = ft_calloc((data->map.line_count + 1), sizeof(char *));
 	if (!(data->map.map))
-		return ;
+		return (0);
 	data->map.fd = open(path, O_RDONLY);
 	if (data->map.fd < 0)
 	{
 		write(2, "Open failed !\n", 15);
-		return ;
+		return (0);
 	}
 	fill_map(data);
 	data->map.line_len = ft_strlen(data->map.map[0]);
 	close(data->map.fd);
+	return (1);
 }

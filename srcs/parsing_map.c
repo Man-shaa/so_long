@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:21:49 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/07 15:53:02 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:51:34 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ int	is_rect(t_data *data)
 	return (1);
 }
 
-int	is_btw_walls(t_data *data)
+int	is_btw_walls(t_data *data, int i)
 {
-	int	i;
 	int	last_row;
 	int	last_column;
 
-	i = 0;
 	last_column = data->map.line_len - 1;
 	last_row = data->map.line_count - 1;
+	if (last_column < 0 || last_row < 0)
+		return (0);
 	while (data->map.map[0][i] != '\0' && data->map.map[0][i] != '\n'
 		&& data->map.map[last_row][i] != '\0'
 		&& data->map.map[last_row][i] != '\n')
@@ -104,7 +104,12 @@ int	parsing(t_data *data)
 	i = 0;
 	row = 0;
 	column = 0;
-	if (!is_rect(data) || !is_btw_walls(data) || !is_valid(row, column, data))
+	if (!is_rect(data) || !is_btw_walls(data, i)
+		|| !is_valid(row, column, data))
+	{
+		write(2, "Map non conforme !\n", 19);
+		free_map(data->map.map);
 		return (0);
+	}
 	return (1);
 }
