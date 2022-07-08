@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:25:42 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/07 17:17:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/08 12:15:04 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	initialise_map(char *path, t_data *data)
 	data->map.path = path;
 	data->map.line_count = line_count(path);
 	data->map.can_exit = 0;
+	data->img.height = IMG_SIZE;
+	data->img.width = IMG_SIZE;
 }
 
 void	create_map(char *path, t_data *data)

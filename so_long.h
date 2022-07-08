@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/07 18:00:26 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:36:39 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@
 # include "mlx/mlx_int.h"
 # include "GNL/get_next_line.h"
 
-# define WINDOW_WIDTH	700
-# define WINDOW_HEIGHT	300
-# define IMG_SIZE		48
+# define WINDOW_WIDTH	1300
+# define WINDOW_HEIGHT	800
+# define IMG_SIZE		100
 # define MLX_ERROR		1
 
 # define GROUND			"Image/ground.xpm"
+# define PLAYER			"Image/player.xpm"
+# define ITEM			"Image/item.xpm"
+# define EXIT			"Image/exit.xpm"
+# define WALL			"Image/wall.xpm"
 
 # define RED_PIXEL		0xFF0000
 # define GREEN_PIXEL	0xFF00
@@ -54,15 +58,6 @@ typedef struct s_image
 	int		line_length;
 
 }	t_image;
-
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int	color;
-}	t_rect;
 
 typedef struct s_map
 {
