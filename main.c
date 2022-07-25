@@ -6,16 +6,18 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:31:35 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 19:49:41 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:08:41 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_data	data;
-	if (!(create_map("maps/test_map.ber", &data)) || !(parsing(&data)))
+	if (ac != 2)
+		return (0);
+	if (!(create_map(av[1], &data)) || !(parsing(&data)))
 		return (0);
 	init_player_pos(&data);
 	init_window(&data);
@@ -30,14 +32,10 @@ int	main(void)
 
 
 // Manque :
-// 	- Choper directement la map en argument
-// 	- Verifier quil y a que 2 arguments
-// 	- Changer le visuel :	- les murs et la sortie
-// 							- decoupage atour du personnage, de la sortie et des items
+//	- Verifier que c'est un fichier .ber et pas un document .ber
+//	- Ecｒire des messages d'erreurs
 // 							- trouver des images des pov differents pour le presonnage selon ses mouvements
-// 							- Pouvoir aller sur la sortie sans sortir si on a pas ramasse tous les items (?)
-// 							- Trouver une image de vulbis plus petite : trop grande par rapport au personnage
 // 	- Ecrire le nombre de pas sans printf
-// 	- Ecrire le nombrede pas direct dans la fenetre (?)
+// 	- Ecrire le nombre direct dans la fenetre (?)
 // 	- Bonus (?)
 // 	- Ennemi avec IA debile (?)
