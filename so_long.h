@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/25 19:02:08 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:15:37 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define IMG_SIZE		100
 # define MLX_ERROR		1
 
-# define GROUND			"Image/ground2.xpm"
+# define GROUND			"Image/ground.xpm"
 # define PLAYER			"Image/player.xpm"
 # define ITEM			"Image/item.xpm"
 # define EXIT			"Image/exit.xpm"
