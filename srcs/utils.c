@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:59:53 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 16:32:19 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:42:27 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ void	ft_bzero(void *tab, size_t n)
 		str++;
 		n--;
 	}
+}
+
+void	ft_putstr_fd(char *str, int fd)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	write(fd, str, len);
 }
 
 void	*ft_calloc(size_t nelem, size_t size)
@@ -47,5 +55,14 @@ int	ft_strchr2(char *str, int c)
 			return (c);
 		i++;
 	}
+	return (0);
+}
+
+int	destroy_all(t_data data)
+{
+	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+	free_map(data.map.map);
+	mlx_destroy_display(data.mlx_ptr);
+	free(data.mlx_ptr);
 	return (0);
 }

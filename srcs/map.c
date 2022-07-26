@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:25:42 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/25 14:56:57 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:05:25 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	create_map(char *path, t_data *data)
 {
 	if (!(initialise_map(path, data)))
 		return (0);
+	if (!check_extension(path))
+		return (ft_putstr_fd("Not a .ber file !\n", 2), 0);
 	data->map.map = ft_calloc((data->map.line_count + 1), sizeof(char *));
 	if (!(data->map.map))
 		return (0);

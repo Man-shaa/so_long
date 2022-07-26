@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:13:13 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 15:01:14 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:32:50 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,42 @@ int	init_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
-		return (MLX_ERROR);
+		return (0);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "un debut de so_long");
+			WINDOW_HEIGHT, "so_long");
 	if (data->win_ptr == NULL)
 	{
 		free(data->win_ptr);
-		return (MLX_ERROR);
+		return (0);
 	}
 	return (1);
 }
 
-void	init_images(t_data *data)
+int	init_images(t_data *data)
 {
 	data->img.ground = mlx_xpm_file_to_image(data->mlx_ptr, GROUND,
 			&data->img.width, &data->img.height);
+	if (!data->img.ground)
+		return (0);
 	data->img.exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT,
 			&data->img.width, &data->img.height);
-	data->img.player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER,
+	if (!data->img.exit)
+		return (0);
+	data->img.player_right = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_RIGHT,
+			&data->img.width, &data->img.height);
+	if (!data->img.player_right)
+		return (0);
+	data->img.player_left = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_LEFT,
 			&data->img.width, &data->img.height);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL,
 			&data->img.width, &data->img.height);
+	if (!data->img.wall)
+		return (0);
 	data->img.item = mlx_xpm_file_to_image(data->mlx_ptr, ITEM,
 			&data->img.width, &data->img.height);
+	if (!data->img.item)
+		return (0);
+	return (1);
 }
 
 void	loop_hook(t_data data)
@@ -65,8 +78,8 @@ void	destroy_images(t_data data)
 		mlx_destroy_image(data.mlx_ptr, data.img.wall);
 	if (data.img.ground)
 		mlx_destroy_image(data.mlx_ptr, data.img.ground);
-	if (data.img.player)
-		mlx_destroy_image(data.mlx_ptr, data.img.player);
+	if (data.img.player_right)
+		mlx_destroy_image(data.mlx_ptr, data.img.player_right);
 	if (data.img.exit)
 		mlx_destroy_image(data.mlx_ptr, data.img.exit);
 	if (data.img.item)

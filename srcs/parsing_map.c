@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:21:49 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 19:51:34 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:39:59 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,20 @@ int	parsing(t_data *data)
 	i = 0;
 	row = 0;
 	column = 0;
-	if (!is_rect(data) || !is_btw_walls(data, i)
-		|| !is_valid(row, column, data))
+	if (!is_rect(data))
 	{
-		write(2, "Map non conforme !\n", 19);
 		free_map(data->map.map);
-		return (0);
+		return (ft_putstr_fd("Map non rectangulaire !\n", 2), 0);
+	}
+	if (!is_btw_walls(data, i))
+	{
+		free_map(data->map.map);
+		return (ft_putstr_fd("Map non conforme !\n", 2), 0);
+	}
+	if (!is_valid(row, column, data))
+	{
+		free_map(data->map.map);
+		return (ft_putstr_fd("Il manque un element de la map !\n", 2), 0);
 	}
 	return (1);
 }

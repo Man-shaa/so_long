@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keypress.c                                         :+:      :+:    :+:   */
+/*   check_extension.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 15:36:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/26 17:34:27 by msharifi         ###   ########.fr       */
+/*   Created: 2022/07/26 15:25:12 by msharifi          #+#    #+#             */
+/*   Updated: 2022/07/26 15:33:34 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	handle_keypress(int keysym, t_data *data)
+int	check_extension(char *path)
 {
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
-	else if (ft_strchr2("wasd", keysym))
-		move_player(data, keysym);
-	return (keysym);
-}
+	int		fd;
+	size_t	len;
 
-int	handle_btnrealease(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
-	return (0);
+	len = ft_strlen(path);
+	if (open(path, __O_DIRECTORY) >= 0)
+	{
+		fd = open(path, __O_DIRECTORY);
+		close(fd);
+		return (0);
+	}
+	else
+	{
+		fd = open(path, O_RDONLY);
+		close(fd);
+		if (path[len - 4] != '.' || path[len - 3] != 'b'
+			|| path[len - 2] != 'e' || path[len - 1] != 'r' || fd < 0)
+			return (0);
+	}
+	return (1);
 }

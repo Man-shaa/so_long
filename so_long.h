@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/25 21:15:37 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:25:23 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # define MLX_ERROR		1
 
 # define GROUND			"Image/ground.xpm"
-# define PLAYER			"Image/player.xpm"
+# define PLAYER_LEFT	"Image/player_left.xpm"
+# define PLAYER_RIGHT	"Image/player_right.xpm"
 # define ITEM			"Image/item.xpm"
 # define EXIT			"Image/exit.xpm"
 # define WALL			"Image/wall.xpm"
@@ -53,7 +54,8 @@ typedef struct s_image
 	void	*wall;
 	void	*exit;
 	void	*ground;
-	void	*player;
+	void	*player_left;
+	void	*player_right;
 	void	*item;
 	int		line_length;
 
@@ -90,6 +92,9 @@ typedef struct s_data
 	t_player	player;
 }	t_data;
 
+// check_extension.c
+int		check_extension(char *path);
+
 // init_player.c
 void	init_player_pos(t_data *data);
 
@@ -106,7 +111,7 @@ int		create_map(char *path, t_data *data);
 
 // mlx_utils.c
 int		init_window(t_data *data);
-void	init_images(t_data *data);
+int		init_images(t_data *data);
 void	loop_hook(t_data data);
 void	destroy_images(t_data data);
 
@@ -124,13 +129,14 @@ int		is_valid(int row, int column, t_data *data);
 int		parsing(t_data *data);
 
 // render.c
-void	init_images(t_data *data);
 void	parse_chars(t_data *data, int width, int i, int j);
 int		render(t_data *data);
 
 // utils.c
 void	ft_bzero(void *tab, size_t n);
+void	ft_putstr_fd(char *str, int fd);
 void	*ft_calloc(size_t nelem, size_t size);
 int		ft_strchr2(char *str, int c);
+int		destroy_all(t_data data);
 
 #endif

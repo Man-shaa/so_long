@@ -4,7 +4,8 @@ SRCS_DIR = srcs/
 
 GNL_DIR = GNL/
 
-SRCS =		${SRCS_DIR}init_player.c \
+SRCS =		${SRCS_DIR}check_extension.c \
+			${SRCS_DIR}init_player.c \
 			${SRCS_DIR}keypress.c \
 			${SRCS_DIR}map.c \
 			${SRCS_DIR}mlx_utils.c \

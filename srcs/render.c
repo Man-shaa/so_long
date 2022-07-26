@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:31:18 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/08 19:51:06 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:38:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_chars(t_data *data, int width, int i, int j)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ground,
 			width, i * IMG_SIZE);
 	else if (data->map.map[i][j] == 'P')
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.player,
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.player_right,
 			width, i * IMG_SIZE);
 	else if (data->map.map[i][j] == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.exit,
