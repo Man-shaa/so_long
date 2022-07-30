@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:35:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/26 17:39:18 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:33:12 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	end_game(t_data *data)
 {
 	if (data->map.can_exit == 1)
 	{
+		ft_putstr_fd("Bravo, vous avez gagné en [", 1);
+		ft_putnbr_fd(data->player.move_count, 1);
+		ft_putstr_fd("] coups !\n", 1);
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 		return (1);
@@ -81,7 +84,11 @@ void	move_player(t_data *data, char direction)
 		data->player.p_y++;
 	if ((data->map.can_exit == 1)
 		&& (data->map.map[data->player.p_x][data->player.p_y] == 'E'))
+	{
 		end_game(data);
-	printf("Nombre de mouvement : %i\n", data->player.move_count);
+		return ;
+	}
+	ft_print("Nombre de mouvements  : ", data->player.move_count, 1);
+	ft_putchar('\n');
 	data->map.map[data->player.p_x][data->player.p_y] = 'P';
 }

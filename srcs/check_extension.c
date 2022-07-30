@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:25:12 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/26 15:33:34 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:17:11 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_extension(char *path)
 		fd = open(path, O_RDONLY);
 		close(fd);
 		if (path[len - 4] != '.' || path[len - 3] != 'b'
-			|| path[len - 2] != 'e' || path[len - 1] != 'r' || fd < 0)
+			|| path[len - 2] != 'e' || path[len - 1] != 'r')
 			return (0);
 	}
 	return (1);

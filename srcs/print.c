@@ -1,51 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 17:59:53 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 13:33:51 by msharifi         ###   ########.fr       */
+/*   Created: 2022/07/28 13:24:32 by msharifi          #+#    #+#             */
+/*   Updated: 2022/07/28 13:26:40 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_bzero(void *tab, int n)
+void	ft_putchar(int c)
 {
-	char	*str;
-
-	str = tab;
-	while (n > 0)
-	{
-		*str = '\0';
-		str++;
-		n--;
-	}
+	write(1, &c, 1);
 }
 
-void	*ft_calloc(size_t nelem, size_t size)
+void	ft_putstr_fd(char *str, int fd)
 {
-	void	*tab;
+	int	len;
 
-	tab = malloc(size * nelem);
-	if (!tab)
-		return (NULL);
-	ft_bzero(tab, (nelem * size));
-	return (tab);
+	len = ft_strlen(str);
+	write(fd, str, len);
 }
 
-int	ft_strchr2(char *str, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar("0123456789"[n % 10]);
+}
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (c);
-		i++;
-	}
-	return (0);
+void	ft_print(char *str, int n, int fd)
+{
+	if (str != NULL)
+		ft_putstr_fd(str, fd);
+	if (n >= 0)
+		ft_putnbr_fd(n, fd);
 }

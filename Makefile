@@ -5,12 +5,14 @@ SRCS_DIR = srcs/
 GNL_DIR = GNL/
 
 SRCS =		${SRCS_DIR}check_extension.c \
+			${SRCS_DIR}destroy.c \
 			${SRCS_DIR}init_player.c \
 			${SRCS_DIR}keypress.c \
 			${SRCS_DIR}map.c \
 			${SRCS_DIR}mlx_utils.c \
 			${SRCS_DIR}moves.c \
 			${SRCS_DIR}parsing_map.c \
+			${SRCS_DIR}print.c \
 			${SRCS_DIR}render.c \
 			${SRCS_DIR}utils.c \
 			${GNL_DIR}get_next_line_utils.c \
@@ -35,7 +37,7 @@ MLX =		./mlx
 
 MLX_LIB = 	./mlx/libmlx_Linux.a
 
-.c.o:		${DEPS}
+.c.o:		${DEPS} 
 		${CC} ${CFLAGS} -I${INCL} -I${MLX} -g3 -c $< -o ${<:.c=.o}
 
 $(NAME):	${OBJS} $(MLX_LIB)

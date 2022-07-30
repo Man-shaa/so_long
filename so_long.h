@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/26 17:25:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:37:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ typedef struct s_data
 // check_extension.c
 int		check_extension(char *path);
 
+// destroy.c
+void	free_map(char **map);
+void	destroy_images(t_data *data);
+int		destroy_all(t_data *data);
+
 // init_player.c
 void	init_player_pos(t_data *data);
 
@@ -103,7 +108,6 @@ int		handle_keypress(int keysym, t_data *data);
 int		handle_btnrealease(t_data *data);
 
 // map.c
-void	free_map(char **map);
 int		line_count(char *access_path);
 void	fill_map(t_data *data);
 int		initialise_map(char *path, t_data *data);
@@ -113,7 +117,6 @@ int		create_map(char *path, t_data *data);
 int		init_window(t_data *data);
 int		init_images(t_data *data);
 void	loop_hook(t_data data);
-void	destroy_images(t_data data);
 
 // moves.c
 int		check_next_tile(t_data *data, char direction, char tile);
@@ -128,15 +131,20 @@ void	select_incrementation(char c, t_data *data);
 int		is_valid(int row, int column, t_data *data);
 int		parsing(t_data *data);
 
+// print.c
+void	ft_putchar(int c);
+void	ft_putstr_fd(char *str, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_print(char *str, int n, int fd);
+
 // render.c
+void	render_player(t_data *data, int width, int i, int j);
 void	parse_chars(t_data *data, int width, int i, int j);
 int		render(t_data *data);
 
 // utils.c
-void	ft_bzero(void *tab, size_t n);
-void	ft_putstr_fd(char *str, int fd);
+void	ft_bzero (void *tab, int n);
 void	*ft_calloc(size_t nelem, size_t size);
 int		ft_strchr2(char *str, int c);
-int		destroy_all(t_data data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:13:13 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/26 17:32:50 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:36:12 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_window(t_data *data)
 	if (data->mlx_ptr == NULL)
 		return (0);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "so_long");
+			WINDOW_HEIGHT, "Dofus 1.8");
 	if (data->win_ptr == NULL)
 	{
 		free(data->win_ptr);
@@ -70,21 +70,4 @@ void	loop_images(t_data data)
 	mlx_hook(data.win_ptr, ClientMessage, LeaveWindowMask,
 		&handle_btnrealease, &data);
 	mlx_loop(data.mlx_ptr);
-}
-
-void	destroy_images(t_data data)
-{
-	if (data.img.wall)
-		mlx_destroy_image(data.mlx_ptr, data.img.wall);
-	if (data.img.ground)
-		mlx_destroy_image(data.mlx_ptr, data.img.ground);
-	if (data.img.player_right)
-		mlx_destroy_image(data.mlx_ptr, data.img.player_right);
-	if (data.img.exit)
-		mlx_destroy_image(data.mlx_ptr, data.img.exit);
-	if (data.img.item)
-		mlx_destroy_image(data.mlx_ptr, data.img.item);
-	if (data.mlx_ptr)
-		mlx_destroy_display(data.mlx_ptr);
-	data.mlx_ptr = NULL;
 }
