@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:21:49 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 13:34:58 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:23:56 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	parsing(t_data *data)
 	if (!is_valid(row, column, data))
 	{
 		free_map(data->map.map);
-		return (ft_putstr_fd("Il manque au moins un element de la map !\n", 2), 0);
+		ft_putstr_fd("Il manque au moins un element de la map !\n", 2);
+		return (0);
 	}
 	return (1);
 }

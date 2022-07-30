@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:35:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 13:33:12 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:15:23 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,5 @@ void	move_player(t_data *data, char direction)
 		end_game(data);
 		return ;
 	}
-	ft_print("Nombre de mouvements  : ", data->player.move_count, 1);
-	ft_putchar('\n');
 	data->map.map[data->player.p_x][data->player.p_y] = 'P';
 }

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 13:37:00 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:11:44 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,7 @@ int		render(t_data *data);
 void	ft_bzero (void *tab, int n);
 void	*ft_calloc(size_t nelem, size_t size);
 int		ft_strchr2(char *str, int c);
+void	fill(char *str, long long nb, int j);
+char	*ft_itoa(int n);
 
 #endif

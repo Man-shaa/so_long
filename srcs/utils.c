@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:59:53 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 13:33:51 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:23:23 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,43 @@ int	ft_strchr2(char *str, int c)
 		i++;
 	}
 	return (0);
+}
+
+void	fill(char *str, long long nb, int j)
+{
+	j--;
+	if (nb < 0)
+	{
+		str[0] = '-';
+		nb = -nb;
+	}
+	while (j >= 0 && str[j] != '-')
+	{
+		str[j] = (nb % 10) + 48;
+		nb /= 10;
+		j--;
+	}
+}
+
+char	*ft_itoa(int n)
+{
+	long long	nb;
+	int			j;
+	char		*str;
+
+	nb = (long long)n;
+	j = 0;
+	if (nb <= 0)
+		j++;
+	while (n != 0)
+	{
+		n /= 10;
+		j++;
+	}
+	str = ft_calloc(j + 1, 1);
+	if (!str)
+		return (NULL);
+	str[j] = '\0';
+	fill(str, nb, j);
+	return (str);
 }
