@@ -50,6 +50,9 @@ $(MLX_LIB):
 
 all:		${NAME}
 
+malloc_test: $(OBJS) $(MLX_LIB)
+	$(CC) ${OBJS} $(CFLAGS) -fsanitize=undefined -rdynamic -o $@ ${MLX_LIB} -L. -lmallocator
+
 clean:		
 		${RM} ${OBJS}
 		make clean -C ${MLX}

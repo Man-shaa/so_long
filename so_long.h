@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/30 18:11:44 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/08/02 14:25:24 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include "mlx/mlx_int.h"
 # include "GNL/get_next_line.h"
 
-# define WINDOW_WIDTH	1600
-# define WINDOW_HEIGHT	1000
 # define IMG_SIZE		100
 # define MLX_ERROR		1
 
@@ -87,6 +85,8 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	int			window_width;
+	int			window_height;
 	t_image		img;
 	t_map		map;
 	t_player	player;

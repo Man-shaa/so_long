@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:13:13 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 13:36:12 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/08/02 14:26:57 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int	init_window(t_data *data)
 {
+	data->window_width = IMG_SIZE * data->map.line_len;
+	data->window_height = IMG_SIZE * data->map.line_count;
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (0);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "Dofus 1.8");
+	data->win_ptr = mlx_new_window(data->mlx_ptr, data->window_width,
+			data->window_height, "Dofus 1.8");
 	if (data->win_ptr == NULL)
 	{
 		free(data->win_ptr);
