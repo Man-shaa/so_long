@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:25:12 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 12:17:11 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:02:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 int	check_extension(char *path)
 {

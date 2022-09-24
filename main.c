@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:31:35 by msharifi          #+#    #+#             */
-/*   Updated: 2022/08/01 14:14:02 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:02:04 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 int	main(int ac, char **av)
 {

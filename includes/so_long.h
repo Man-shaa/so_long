@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:32:07 by msharifi          #+#    #+#             */
-/*   Updated: 2022/08/02 14:25:24 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/24 13:00:27 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "mlx/mlx.h"
-# include "mlx/mlx_int.h"
-# include "GNL/get_next_line.h"
+# include "../mlx/mlx.h"
+# include "../mlx/mlx_int.h"
+# include "../GNL/get_next_line.h"
 
 # define IMG_SIZE		100
 # define MLX_ERROR		1
@@ -95,7 +95,7 @@ typedef struct s_data
 // check_extension.c
 int		check_extension(char *path);
 
-// destroy.c
+// free.c
 void	free_map(char **map);
 void	destroy_images(t_data *data);
 int		destroy_all(t_data *data);
@@ -143,7 +143,7 @@ void	parse_chars(t_data *data, int width, int i, int j);
 int		render(t_data *data);
 
 // utils.c
-void	ft_bzero (void *tab, int n);
+void	ft_bzero(void *tab, int n);
 void	*ft_calloc(size_t nelem, size_t size);
 int		ft_strchr2(char *str, int c);
 void	fill(char *str, long long nb, int j);

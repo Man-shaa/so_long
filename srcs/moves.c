@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:35:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/30 18:15:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:06:20 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 int	check_next_tile(t_data *data, char direction, char tile)
 {
@@ -54,9 +54,9 @@ int	end_game(t_data *data)
 {
 	if (data->map.can_exit == 1)
 	{
-		ft_putstr_fd("Bravo, vous avez gagné en [", 1);
+		ft_putstr_fd("Well done, you won in [", 1);
 		ft_putnbr_fd(data->player.move_count, 1);
-		ft_putstr_fd("] coups !\n", 1);
+		ft_putstr_fd("] moves !\n", 1);
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 		return (1);

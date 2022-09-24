@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:21:49 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/30 18:23:56 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:02:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 int	is_rect(t_data *data)
 {

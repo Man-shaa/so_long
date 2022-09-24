@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:59:53 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/30 18:23:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:02:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_bzero(void *tab, int n)
 {

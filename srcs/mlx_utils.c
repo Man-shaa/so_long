@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:13:13 by msharifi          #+#    #+#             */
-/*   Updated: 2022/08/02 14:26:57 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:02:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 int	init_window(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:36:55 by msharifi          #+#    #+#             */
-/*   Updated: 2022/07/28 11:55:03 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:02:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 int	handle_keypress(int keysym, t_data *data)
 {

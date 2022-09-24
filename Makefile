@@ -5,7 +5,7 @@ SRCS_DIR = srcs/
 GNL_DIR = GNL/
 
 SRCS =		${SRCS_DIR}check_extension.c \
-			${SRCS_DIR}destroy.c \
+			${SRCS_DIR}free.c \
 			${SRCS_DIR}init_player.c \
 			${SRCS_DIR}keypress.c \
 			${SRCS_DIR}map.c \
